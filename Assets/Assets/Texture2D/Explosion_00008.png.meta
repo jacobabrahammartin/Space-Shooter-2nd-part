@@ -1,0 +1,223 @@
+fileFormatVersion: 2
+guid: 27238bea6b5e30945bb3cf2f259d84a2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Explosion_00008
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 12
+  maxTextureSize: 512
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Explosion_00008
+      rect:
+        serializedVersion: 2
+        x: 105.0761
+        y: 95.07612
+        width: 285.8478
+        height: 319.8478
+      alignment: 9
+      pivot: {x: 0.5279869, y: 0.5031265}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -142, y: -60}
+        - {x: -143, y: -1}
+        - {x: -143, y: 63}
+        - {x: -134, y: 86}
+        - {x: -111, y: 119}
+        - {x: -96.99999, y: 133}
+        - {x: -75, y: 147}
+        - {x: -51, y: 156}
+        - {x: -28, y: 160}
+        - {x: 25, y: 160}
+        - {x: 38, y: 159}
+        - {x: 62, y: 151}
+        - {x: 74, y: 146}
+        - {x: 92, y: 137}
+        - {x: 112, y: 120}
+        - {x: 135, y: 86}
+        - {x: 142, y: 60}
+        - {x: 143, y: 31}
+        - {x: 143, y: -35}
+        - {x: 142, y: -64}
+        - {x: 126, y: -100}
+        - {x: 98, y: -133}
+        - {x: 70, y: -148}
+        - {x: 51, y: -155}
+        - {x: 33, y: -160}
+        - {x: -34, y: -160}
+        - {x: -65, y: -152}
+        - {x: -92, y: -137}
+        - {x: -111, y: -119}
+        - {x: -126, y: -100}
+        - {x: -133, y: -85}
+        - {x: -140, y: -65}
+      physicsShape:
+      - - {x: -36, y: -84}
+        - {x: -38, y: -86}
+        - {x: -38, y: -88}
+        - {x: -36, y: -90}
+        - {x: -34, y: -90}
+        - {x: -32, y: -88}
+        - {x: -32, y: -87}
+        - {x: -35, y: -84}
+      - - {x: -40, y: -86}
+        - {x: -37, y: -84.99999}
+        - {x: -37, y: -82}
+        - {x: -40, y: -81}
+        - {x: -42, y: -83}
+      - - {x: 40, y: 99.99999}
+        - {x: 41, y: 97}
+        - {x: 44, y: 97}
+        - {x: 46, y: 98.99999}
+        - {x: 45, y: 102}
+        - {x: 42, y: 102}
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb1f59b438414f04acbee85cee7e8f86
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Explosion_00008: 21300000
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

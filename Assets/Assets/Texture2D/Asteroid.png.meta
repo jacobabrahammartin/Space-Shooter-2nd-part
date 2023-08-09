@@ -1,0 +1,231 @@
+fileFormatVersion: 2
+guid: a699f7b0c89d8554b86ab99b067872ee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Asteroid
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 12
+  maxTextureSize: 512
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Asteroid
+      rect:
+        serializedVersion: 2
+        x: 146.0267
+        y: 133.0761
+        width: 232.9465
+        height: 265.8904
+      alignment: 9
+      pivot: {x: 0.4720966, y: 0.4623103}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -106.5, y: -80.02132}
+        - {x: -116.5, y: -29.02132}
+        - {x: -116.5, y: 12.97868}
+        - {x: -115.5, y: 22.97868}
+        - {x: -82.49999, y: 76.97868}
+        - {x: -64.49999, y: 95.97868}
+        - {x: -36.49999, y: 121.9787}
+        - {x: -13.49999, y: 132.9787}
+        - {x: 0.5000076, y: 132.9787}
+        - {x: 74.50001, y: 57.97868}
+        - {x: 90.50001, y: 37.97868}
+        - {x: 113.5, y: -16.02132}
+        - {x: 116.5, y: -32.02132}
+        - {x: 116.5, y: -43.02132}
+        - {x: 111.5, y: -67.02132}
+        - {x: 86.50001, y: -104.0213}
+        - {x: -1.499992, y: -133.0213}
+        - {x: -44.49999, y: -133.0213}
+        - {x: -72.49999, y: -125.0213}
+      physicsShape:
+      - - {x: 81.50001, y: -103.0213}
+        - {x: 90.50001, y: -94.02132}
+        - {x: 109.5, y: -66.02132}
+        - {x: 113.5, y: -55.02132}
+        - {x: 115.5, y: -42.02132}
+        - {x: 115.5, y: -36.02132}
+        - {x: 104.5, y: 0.9786835}
+        - {x: 87.50001, y: 36.97868}
+        - {x: 72.50001, y: 57.97868}
+        - {x: 55.50001, y: 73.97868}
+        - {x: 38.50001, y: 87.97868}
+        - {x: 29.50001, y: 100.9787}
+        - {x: 13.50001, y: 112.9787}
+        - {x: -6.499992, y: 131.9787}
+        - {x: -8.499992, y: 131.9787}
+        - {x: -17.49999, y: 127.9787}
+        - {x: -32.49999, y: 120.9787}
+        - {x: -47.49999, y: 98.97868}
+        - {x: -63.49999, y: 93.97868}
+        - {x: -82.49999, y: 74.97868}
+        - {x: -90.49999, y: 56.97868}
+        - {x: -104.5, y: 37.97868}
+        - {x: -112.5, y: 21.97868}
+        - {x: -112.5, y: 18.97868}
+        - {x: -102.5, y: -1.021317}
+        - {x: -115.5, y: -14.02132}
+        - {x: -115.5, y: -23.02132}
+        - {x: -106.5, y: -43.02132}
+        - {x: -107.5, y: -52.02132}
+        - {x: -104.5, y: -68.02132}
+        - {x: -100.5, y: -78.02132}
+        - {x: -84.49999, y: -107.0213}
+        - {x: -71.49999, y: -124.0213}
+        - {x: -48.49999, y: -130.0213}
+        - {x: -40.49999, y: -131.0213}
+        - {x: -28.49999, y: -132.0213}
+        - {x: -4.499992, y: -132.0213}
+        - {x: 16.50001, y: -125.0213}
+        - {x: 35.50001, y: -115.0213}
+        - {x: 54.50001, y: -112.0213}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51f1ad61e3d7410f972c3b63e09dbd4b
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Asteroid: 21300000
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
