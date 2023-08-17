@@ -4,18 +4,10 @@ using UnityEngine;
 
 public class EnemyLazer : MonoBehaviour
 {
-
     private float _speed = 15f;
+    private float _playBoundYBottom = -14f;
 
-    private float _playBoundY = -14;
-
-    private int damageDelt = 1;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    private int _damageDealt = 1;
 
     // Update is called once per frame
     void Update()
@@ -28,30 +20,26 @@ public class EnemyLazer : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             Player player = other.transform.GetComponent<Player>();
             if (player != null)
             {
-                player.Damage(damageDelt);
+                player.Damage(_damageDealt);
             }
         }
     }
 
-    void CalculateMovement()
+    private void CalculateMovement()
     {
-
-        Vector3 directon = new Vector3(0, -1, 0) * _speed * Time.deltaTime;
-
-        transform.Translate(directon);
+        Vector3 direction = new Vector3(0, -1, 0) * _speed * Time.deltaTime;
+        transform.Translate(direction);
     }
 
-
-    void CalculateDeSpawn()
+    private void CalculateDeSpawn()
     {
-        if (transform.position.y < _playBoundY)
+        if (transform.position.y < _playBoundYBottom)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }
-

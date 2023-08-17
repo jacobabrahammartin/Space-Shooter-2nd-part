@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     [SerializeField]
     private float _speed = 13f;
 
-    private float playBoundX = 11;
+    private float _playBoundX = 11;
 
     [SerializeField]
-    private GameObject _laserPreFab;
+    private GameObject _laserPrefab;
 
     [SerializeField]
     private float _fireRate = 0.25f;
@@ -27,55 +26,54 @@ public class Player : MonoBehaviour
 
     private float _nextFireRate = 0.25f;
 
-    private int health = 3;
+    private int _health = 3;
 
-    private bool trippleShot = false;
-    private bool shield = false;
-    private float speed2 = 1f;
-    private float speedBoost = 1.2f;
+    private bool _trippleShot = false;
+    private bool _shield = false;
+    private float _speedMultiplier = 1f;
+    private float _speedBoost = 1.2f;
 
     [SerializeField]
     private GameObject _shieldVisualizer;
 
     [SerializeField]
-    AudioSource deathAudio;
+    private AudioSource _deathAudio;
 
     [SerializeField]
-    AudioSource powerUpAudio;
+    private AudioSource _powerUpAudio;
 
-    UIManager ui;
+    private UIManager _ui;
 
-    Animator amimator;
+    private Animator _animator;
 
     [SerializeField]
-    private int player = 1;
+    private int _player = 1;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        //starting pos set = (0,0,0)
-        if (player == 1)
+        if (_player == 1)
         {
             transform.position = new Vector3(0, -4, 0);
         }
-        else if (player == 2)
+        else if (_player == 2)
         {
             transform.position = new Vector3(3, -4, 0);
         }
 
-        ui = GameObject.Find("UIManager").GetComponent<UIManager>();
-        deathAudio = GetComponent<AudioSource>();
-        amimator = GetComponent<Animator>();
+        _ui = GameObject.Find("UIManager").GetComponent<UIManager>();
+        _deathAudio = GetComponent<AudioSource>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         CalculateMovement();
         Fire();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "PowerUpTrippleShot")
         {
@@ -85,7 +83,7 @@ public class Player : MonoBehaviour
         if (other.tag == "PowerUpSpeed")
         {
             Destroy(other.gameObject, 0.1f);
-            EnableSpeed2();
+            EnableSpeedMultiplier();
         }
         if (other.tag == "PowerUpShield")
         {
@@ -94,80 +92,80 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Fire()
+    private void Fire()
     {
-        if (((player == 1 && Input.GetKey(KeyCode.Space)) || (player == 2 && Input.GetKey(KeyCode.Keypad0))) && Time.time > _nextFireRate)
+        if (((_player == 1 && Input.GetKey(KeyCode.Space)) || (_player == 2 && Input.GetKey(KeyCode.Keypad0))) && Time.time > _nextFireRate)
         {
             _nextFireRate = Time.time + _fireRate;
-            Instantiate(_laserPreFab, transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
+            Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
 
-            if (trippleShot)
+            if (_trippleShot)
             {
-                Instantiate(_laserPreFab, transform.position + new Vector3(-0.5f, 0f, 0), Quaternion.Euler(0, 0, 15));
-                Instantiate(_laserPreFab, transform.position + new Vector3(0.5f, 0f, 0), Quaternion.Euler(0, 0, -15));
+                Instantiate(_laserPrefab, transform.position + new Vector3(-0.5f, 0f, 0), Quaternion.Euler(0, 0, 15));
+                Instantiate(_laserPrefab, transform.position + new Vector3(0.5f, 0f, 0), Quaternion.Euler(0, 0, -15));
             }
         }
     }
 
-    void CalculateMovement()
+    private void CalculateMovement()
     {
         float inputH = 0;
         float inputV = 0;
-        if (player == 1)
+
+        if (_player == 1)
         {
             inputH = Input.GetAxis("HorizontalP1");
             inputV = Input.GetAxis("VerticalP1");
         }
-        else if (player == 2)
+        else if (_player == 2)
         {
             inputH = Input.GetAxis("HorizontalP2");
             inputV = Input.GetAxis("VerticalP2");
         }
 
-        Vector3 directon = new Vector3(inputH, inputV, 0) * _speed * speed2 * Time.deltaTime;
-
-        transform.Translate(directon);
+        Vector3 direction = new Vector3(inputH, inputV, 0) * _speed * _speedMultiplier * Time.deltaTime;
+        transform.Translate(direction);
 
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -4, 6), transform.position.z);
 
-        if (transform.position.x > playBoundX)
+        if (transform.position.x > _playBoundX)
         {
-            transform.position = new Vector3(-1 * playBoundX, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-1 * _playBoundX, transform.position.y, transform.position.z);
         }
-        else if (transform.position.x < -1 * playBoundX)
+        else if (transform.position.x < -1 * _playBoundX)
         {
-            transform.position = new Vector3(1 * playBoundX, transform.position.y, transform.position.z);
+            transform.position = new Vector3(1 * _playBoundX, transform.position.y, transform.position.z);
         }
     }
 
     public void Damage(int amount)
     {
-        if (shield)
+        if (_shield)
         {
-            shield = false;
+            _shield = false;
             _shieldVisualizer.SetActive(false);
         }
         else
         {
             UpdateHealth(-1);
-            trippleShot = false;
-            speed2 = 1f;
-            if (health <= 0)
+            _trippleShot = false;
+            _speedMultiplier = 1f;
+
+            if (_health <= 0)
             {
-                deathAudio.Play(0);
-                amimator.SetTrigger("onDeath");
-                Destroy(this.gameObject, 1.5f);
+                _deathAudio.Play(0);
+                _animator.SetTrigger("onDeath");
+                Destroy(gameObject, 1.5f);
                 _leftFire.SetActive(false);
                 _fireRight.SetActive(false);
                 _thruster.SetActive(false);
-
             }
 
-            if (health == 2)
+            if (_health == 2)
             {
                 _fireRight.SetActive(true);
             }
-            else if (health == 1)
+            else if (_health == 1)
             {
                 _leftFire.SetActive(true);
             }
@@ -176,28 +174,28 @@ public class Player : MonoBehaviour
 
     public void EnableTrippleShot()
     {
-        trippleShot = true;
+        _trippleShot = true;
     }
 
     public void EnableShield()
     {
-        shield = true;
+        _shield = true;
         _shieldVisualizer.SetActive(true);
     }
 
-    public void EnableSpeed2()
+    public void EnableSpeedMultiplier()
     {
-        speed2 = speedBoost;
+        _speedMultiplier = _speedBoost;
     }
 
     public void AddScore(int amount)
     {
-        ui.AddToScore(amount);
+        _ui.AddToScore(amount);
     }
 
     public void UpdateHealth(int amount)
     {
-        health += amount;
-        ui.SetLives(health, player);
+        _health += amount;
+        _ui.SetLives(_health, _player);
     }
 }

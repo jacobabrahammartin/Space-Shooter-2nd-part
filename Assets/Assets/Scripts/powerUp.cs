@@ -2,49 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class powerUp : MonoBehaviour
+public class PowerUp : MonoBehaviour
 {
     private float _speed = 3.5f;
     private float _playBoundY = -6f;
 
     [SerializeField]
-    AudioSource powerUpAudio;
+    private AudioSource _powerUpAudio;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        powerUpAudio = GetComponent<AudioSource>();
+        _powerUpAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         CalculateMovement();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            powerUpAudio.Play(0);
+            _powerUpAudio.Play(0);
         }
     }
 
-    void CalculateMovement()
+    private void CalculateMovement()
     {
-
-        Vector3 directon = new Vector3(0, -1, 0) * _speed * Time.deltaTime;
-
-        transform.Translate(directon);
-
+        Vector3 direction = new Vector3(0, -1, 0) * _speed * Time.deltaTime;
+        transform.Translate(direction);
         CalculateDeSpawn();
     }
 
-    void CalculateDeSpawn()
+    private void CalculateDeSpawn()
     {
         if (transform.position.y < _playBoundY)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

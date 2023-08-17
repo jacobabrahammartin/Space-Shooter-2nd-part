@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class Lazer : MonoBehaviour
 {
-
     private float _speed = 15f;
 
     private float _playBoundY = 14;
 
-    private int damageDelt = 20;
+    private int _damageDealt = 20;
     [SerializeField]
     private float _minFireRate = 30;
     [SerializeField]
     private float _maxFireRate = 50f;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         CalculateMovement();
         CalculateDeSpawn();
@@ -33,7 +31,6 @@ public class Lazer : MonoBehaviour
         _minFireRate = minFireRate;
     }
 
-    // Method to set the maximum firing rate
     public void SetMaxFireRate(float maxFireRate)
     {
         _maxFireRate = maxFireRate;
@@ -43,33 +40,30 @@ public class Lazer : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             Enemy enemy = other.transform.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.Damage(damageDelt);
+                enemy.Damage(_damageDealt);
             }
         }
         if (other.tag == "Asteroid")
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
-    void CalculateMovement()
+    private void CalculateMovement()
     {
-
-        Vector3 directon = new Vector3(0, 1, 0) * _speed * Time.deltaTime;
-
-        transform.Translate(directon);
+        Vector3 direction = new Vector3(0, 1, 0) * _speed * Time.deltaTime;
+        transform.Translate(direction);
     }
 
-
-    void CalculateDeSpawn()
+    private void CalculateDeSpawn()
     {
         if (transform.position.y > _playBoundY)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

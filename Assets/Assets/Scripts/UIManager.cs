@@ -5,66 +5,65 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField]
+    private int _score = 0;
 
     [SerializeField]
-    private int score = 0;
+    private int _highScore = 0;
 
     [SerializeField]
-    private int highScore = 0;
+    private Text _scoreText;
 
     [SerializeField]
-    private Text scoreText;
+    private Text _highScoreText;
 
     [SerializeField]
-    private Text highScoreText;
+    private Text _gameOverText;
 
     [SerializeField]
-    private Text gameOver;
+    private Text _restartText;
 
     [SerializeField]
-    private Text restartText;
+    private Image[] _livesImages;
 
     [SerializeField]
-    private Image[] livesImages;
+    private Sprite[] _liveSprites;
 
-    [SerializeField]
-    private Sprite[] liveSprites;
+    private bool _flicker = false;
 
-    private bool flicker = false;
+    private bool _isGameOver = false;
 
-    private bool isOver = false;
-
-    GameManager gameManager;
+    private GameManager _gameManager;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        highScore = PlayerPrefs.GetInt("HighScore");
-        scoreText.text = "Score: " + score;
-        highScoreText.text = "Best: " + highScore;
-        foreach (Image livesImage in livesImages)
+        _highScore = PlayerPrefs.GetInt("HighScore");
+        _scoreText.text = "Score: " + _score;
+        _highScoreText.text = "Best: " + _highScore;
+
+        foreach (Image livesImage in _livesImages)
         {
-            livesImage.sprite = liveSprites[liveSprites.Length - 1];
+            livesImage.sprite = _liveSprites[_liveSprites.Length - 1];
         }
 
-        gameOver.gameObject.SetActive(false);
-        restartText.gameObject.SetActive(false);
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _gameOverText.gameObject.SetActive(false);
+        _restartText.gameObject.SetActive(false);
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
 
-    IEnumerator FlickerText()
+    private IEnumerator FlickerText()
     {
         while (true)
         {
-            flicker = (flicker == false);
-            gameOver.gameObject.SetActive(flicker);
-            restartText.gameObject.SetActive(!flicker);
+            _flicker = !_flicker;
+            _gameOverText.gameObject.SetActive(_flicker);
+            _restartText.gameObject.SetActive(!_flicker);
             yield return new WaitForSeconds(1);
         }
     }
@@ -73,10 +72,10 @@ public class UIManager : MonoBehaviour
     {
         if (player - 1 >= 0 && amount >= 0)
         {
-            livesImages[player - 1].sprite = liveSprites[amount];
+            _livesImages[player - 1].sprite = _liveSprites[amount];
             if (amount == 0)
             {
-                gameManager.GameOver();
+                _gameManager.GameOver();
             }
         }
     }
@@ -88,18 +87,20 @@ public class UIManager : MonoBehaviour
 
     public void AddToScore(int amount)
     {
-        score += amount;
-        scoreText.text = "Score: " + score;
-        if (score > highScore)
+        _score += amount;
+        _scoreText.text = "Score: " + _score;
+        if (_score > _highScore)
         {
-            highScore = score;
-            highScoreText.text = "Best: " + highScore;
-            PlayerPrefs.SetInt("HighScore", highScore);
+            _highScore = _score;
+            _highScoreText.text = "Best: " + _highScore;
+            PlayerPrefs.SetInt("HighScore", _highScore);
         }
     }
 
-    public void updateHighScore()
+    public void UpdateHighScore(int newHighScore)
     {
-
+        _highScore = newHighScore;
+        _highScoreText.text = "Best: " + _highScore;
+        PlayerPrefs.SetInt("HighScore", _highScore);
     }
 }

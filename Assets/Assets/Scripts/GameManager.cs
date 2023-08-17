@@ -5,51 +5,48 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
-    public bool isGameOver = false;
-
-    [SerializeField]
-    public int numberOfPlayersAlive = 1;
-    public int numberOfPlayers = 1;
-
-    UIManager uiManager;
-
-    private EnemySpawner enemySpawner;
-    private PowerUpSpawner powerUpSpawner;
+    public bool IsGameOver = false;
 
     [SerializeField]
-    private Canvas pauseMenue;
+    private int _numberOfPlayersAlive = 1;
+    private int _numberOfPlayers = 1;
 
+    private UIManager _uiManager;
+
+    private EnemySpawner _enemySpawner;
+    private PowerUpSpawner _powerUpSpawner;
+
+    [SerializeField]
+    private Canvas _pauseMenu;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-        enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
-        powerUpSpawner = GameObject.Find("PowerUpSpawner").GetComponent<PowerUpSpawner>();
-        numberOfPlayers = numberOfPlayersAlive;
-        powerUpSpawner.StartSpawning();
+        _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        _enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
+        _powerUpSpawner = GameObject.Find("PowerUpSpawner").GetComponent<PowerUpSpawner>();
+        _numberOfPlayers = _numberOfPlayersAlive;
+        _powerUpSpawner.StartSpawning();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        checkForGameRestart();
+        CheckForGameRestart();
     }
 
-    private void checkForGameRestart()
+    private void CheckForGameRestart()
     {
-        if (Input.GetKeyDown(KeyCode.R) && isGameOver)
+        if (Input.GetKeyDown(KeyCode.R) && IsGameOver)
         {
-            if (numberOfPlayers == 1)
+            if (_numberOfPlayers == 1)
             {
                 SceneManager.LoadScene(1);
             }
-            else if (numberOfPlayers == 2)
+            else if (_numberOfPlayers == 2)
             {
                 SceneManager.LoadScene(2);
             }
-
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -65,25 +62,25 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        numberOfPlayersAlive--;
-        if (numberOfPlayersAlive == 0)
+        _numberOfPlayersAlive--;
+        if (_numberOfPlayersAlive == 0)
         {
-            isGameOver = true;
-            enemySpawner.StopSpawning();
-            powerUpSpawner.StopSpawning();
-            uiManager.GameOverScreen();
+            IsGameOver = true;
+            _enemySpawner.StopSpawning();
+            _powerUpSpawner.StopSpawning();
+            _uiManager.GameOverScreen();
         }
     }
 
     public void Pause()
     {
-        pauseMenue.gameObject.SetActive(true);
+        _pauseMenu.gameObject.SetActive(true);
         Time.timeScale = 0.0f;
     }
 
     public void Resume()
     {
-        pauseMenue.gameObject.SetActive(false);
+        _pauseMenu.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
     }
 

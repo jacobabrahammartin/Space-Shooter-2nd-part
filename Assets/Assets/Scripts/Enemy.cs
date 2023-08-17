@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
     private float _speed = 5f;
     private float _playBoundYTop = 8f;
     private float _playBoundYBottom = -6f;
-    private float playBoundX = 10;
+    private float _playBoundX = 10;
 
-    private float health = 50f;
+    private float _health = 50f;
 
-    private int damageDelt = 1;
-    private int score = 10;
+    private int _damageDealt = 1;
+    private int _score = 10;
 
-    UIManager ui;
+    private UIManager _ui;
 
-    Animator amimator;
+    private Animator _animator;
 
     [SerializeField]
-    AudioSource deathAudio;
+    private AudioSource _deathAudio;
 
     [SerializeField]
     private GameObject _enemyFire;
@@ -29,81 +28,79 @@ public class Enemy : MonoBehaviour
     private float _maxFireRate = 7f;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        ui = GameObject.Find("UIManager").GetComponent<UIManager>();
-        amimator = GetComponent<Animator>();
-        deathAudio = GetComponent<AudioSource>();
+        _ui = GameObject.Find("UIManager").GetComponent<UIManager>();
+        _animator = GetComponent<Animator>();
+        _deathAudio = GetComponent<AudioSource>();
         StartCoroutine(FireRoutine());
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         CalculateMovement();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
             Player player = other.transform.GetComponent<Player>();
-            if (player != null && damageDelt != 0)
+            if (player != null && _damageDealt != 0)
             {
-                player.Damage(damageDelt);
-                Destroy();
+                player.Damage(_damageDealt);
+                DestroyEnemy();
             }
         }
     }
 
-    IEnumerator FireRoutine()
+    private IEnumerator FireRoutine()
     {
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(_minFireRate, _maxFireRate));
-            SpawnEnemyLazer();
+            SpawnEnemyLaser();
         }
     }
 
-    void SpawnEnemyLazer()
+    private void SpawnEnemyLaser()
     {
-        if (damageDelt != 0)
+        if (_damageDealt != 0)
         {
-            GameObject enemy = Instantiate(_enemyFire, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            Instantiate(_enemyFire, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
         }
     }
 
-    void CalculateMovement()
+    private void CalculateMovement()
     {
+        Vector3 direction = new Vector3(0, -1, 0) * _speed * Time.deltaTime;
+        transform.Translate(direction);
 
-        Vector3 directon = new Vector3(0, -1, 0) * _speed * Time.deltaTime;
-
-        transform.Translate(directon);
-
-        if (transform.position.y < _playBoundYBottom && damageDelt != 0)
+        if (transform.position.y < _playBoundYBottom && _damageDealt != 0)
         {
-            transform.position = new Vector3(Random.Range(-1 * playBoundX, playBoundX), _playBoundYTop, transform.position.z);
+            transform.position = new Vector3(Random.Range(-1 * _playBoundX, _playBoundX), _playBoundYTop, transform.position.z);
         }
     }
 
     public void Damage(int amount)
     {
-        health -= amount;
-        if (health <= 0)
+        _health -= amount;
+        if (_health <= 0)
         {
-            Destroy();
+            DestroyEnemy();
         }
     }
 
-    private void Destroy()
+    private void DestroyEnemy()
     {
-        if (damageDelt != 0)
+        if (_damageDealt != 0)
         {
-            damageDelt = 0;
-            ui.AddToScore(10);
-            amimator.SetTrigger("onEnemyDeath");
-            deathAudio.Play(0);
-            Destroy(this.gameObject, 2.5f);
+            _damageDealt = 0;
+            _ui.AddToScore(_score);
+            _animator.SetTrigger("onEnemyDeath");
+            _deathAudio.Play(0);
+            Destroy(gameObject, 2.5f);
         }
     }
 }
